@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -33,14 +34,32 @@ class Department
      * @ORM\Column(name="location", type="string", length=255)
      *
      */
-
     private $location;
 
+    /**
+     * @var int
+     * @ORM\OneToMany(targetEntity="Employee", mappedBy="department")
+     */
+    private $employee;
+
+    public function __construct()
+    {
+        $this->employee = new ArrayCollection();
+    }
+
+    public function __get($name)
+    {
+        $this->name;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 
     /**
      * @return int
      */
-
     public function getId()
     {
         return $this->id;
@@ -49,7 +68,6 @@ class Department
     /**
      * @return string
      */
-
     public function getName()
     {
         return $this->name;
@@ -58,7 +76,6 @@ class Department
     /**
      * @param string $name
      */
-
     public function setName($name)
     {
         $this->name = $name;
@@ -67,7 +84,6 @@ class Department
     /**
      * @return string
      */
-
     public function getLocation()
     {
         return $this->location;
@@ -76,11 +92,24 @@ class Department
     /**
      * @param string $location
      */
-
     public function setLocation($location)
     {
         $this->location = $location;
     }
 
-}
+    /**
+     * @return int
+     */
+    public function getEmployee()
+    {
+        return $this->employee;
+    }
 
+    /**
+     * @param int $employee
+     */
+    public function setEmployee($employee)
+    {
+        $this->employee = $employee;
+    }
+}

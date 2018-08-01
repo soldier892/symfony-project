@@ -25,9 +25,14 @@ class Document
      * @var string
      * @ORM\Column(name="name", type="string", length=255)
      */
-
     private $name;
 
+    /**
+     * @var int
+     * @ORM\OneToOne(targetEntity="Employee", mappedBy="document")
+     * @ORM\JoinColumn(name="employee_id", referencedColumnName="id")
+     */
+    private $employee;
 
     /**
      * Get id
@@ -55,6 +60,19 @@ class Document
         $this->name = $name;
     }
 
+    /**
+     * @return int
+     */
+    public function getEmployee()
+    {
+        return $this->employee;
+    }
 
+    /**
+     * @param int $employee
+     */
+    public function setEmployee($employee)
+    {
+        $this->employee = $employee;
+    }
 }
-
