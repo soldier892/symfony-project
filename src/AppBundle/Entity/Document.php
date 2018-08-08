@@ -61,7 +61,7 @@ class Document
     }
 
     /**
-     * @return int
+     * @return object
      */
     public function getEmployee()
     {
@@ -69,7 +69,7 @@ class Document
     }
 
     /**
-     * @param int $employee
+     * @param object $employee
      */
     public function setEmployee($employee)
     {

@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: admin.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -72,62 +73,6 @@ swiftmailer:
 sensio_framework_extra:
    router:
         annotations: false
-
-easy_admin:
-    entities:
-        Department:
-            class: AppBundle\Entity\Department
-            label: 'Department'
-            list:
-                title: "Most Recent %%entity_label%%s"
-            show:
-                title: '%%entity_label%% (#%%entity_id%%)'
-        Document:
-            class: AppBundle\Entity\Document
-            label: 'Document'
-            list:
-                 title: "Most Recent %%entity_label%%s"
-            show:
-                 title: '%%entity_label%% (#%%entity_id%%)'
-        Employee:
-            class: AppBundle\Entity\Employee
-            label: 'Employee'
-            list:
-                 title: "Most Recent %%entity_label%%s"
-            show:
-                 title: '%%entity_label%% (#%%entity_id%%)'
-        PersonalInfo:
-            class: AppBundle\Entity\PersonalInfo
-            label: 'PersonalInfo'
-            list:
-                 title: "Most Recent %%entity_label%%s"
-            show:
-                 title: '%%entity_label%% (#%%entity_id%%)'
-        Task:
-            class: AppBundle\Entity\Task
-            label: 'Task'
-            list:
-                 title: "Most Recent %%entity_label%%s"
-            show:
-                 title: '%%entity_label%% (#%%entity_id%%)'
-
-    site_name: '<em>Employee Management System</>'
-    design:
-        brand_color: '#205081'
-        color_scheme: 'dark'
-        rtl: false
-        form_theme: 'horizontal'
-    list:
-        max_results: 20
-    formats:
-        date:     'd/m/Y'
-        time:     'H:i'
-        datetime: 'd/m/Y H:i:s'
-        number: '%.2f'
-    edit:
-        title: '%%entity_label%%_edit'
-    new:
-        title: 'New %%entity_label%%'
 
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'

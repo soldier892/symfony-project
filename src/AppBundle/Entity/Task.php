@@ -34,6 +34,7 @@ class Task
     private $description;
 
     /**
+     * @var object
      * @ORM\ManyToMany(targetEntity="Employee", mappedBy="task")
      */
     private $employee;
@@ -93,5 +94,21 @@ class Task
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+
+    /**
+     * @return object
+     */
+    public function getEmployee()
+    {
+        return $this->employee;
+    }
+
+    /**
+     * @param object $employee
+     */
+    public function setEmployee($employee)
+    {
+        $this->employee = $employee;
     }
 }
