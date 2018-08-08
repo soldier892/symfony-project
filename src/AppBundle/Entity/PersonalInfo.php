@@ -55,7 +55,7 @@ class PersonalInfo
     private $cnic;
 
     /**
-     * @var int
+     * @var object
      * @ORM\OneToOne(targetEntity="Employee", inversedBy="personalInfo")
      * @ORM\JoinColumn(name="employee_id", referencedColumnName="id")
      */
@@ -154,7 +154,7 @@ class PersonalInfo
     }
 
     /**
-     * @return mixed
+     * @return object
      */
     public function getEmployee()
     {
@@ -162,7 +162,7 @@ class PersonalInfo
     }
 
     /**
-     * @param mixed $employee
+     * @param object $employee
      */
     public function setEmployee($employee)
     {

@@ -56,20 +56,20 @@ class Employee
     private $employmentType;
 
     /**
-     * @var int
+     * @var object
      * @ORM\OneToOne(targetEntity="PersonalInfo", mappedBy="employee")
      */
     private $personalInfo;
 
     /**
-     * @var int
+     * @var object
      * @ORM\ManyToOne(targetEntity="Department", inversedBy="employee")
      * @ORM\JoinColumn(name="dept_id", referencedColumnName="id")
      */
     private $department;
 
     /**
-     * @var int
+     * @var object
      * @ORM\OneToOne(targetEntity="Document", inversedBy="employee")
      */
     private $document;
@@ -90,11 +90,6 @@ class Employee
     {
         return $this->getPersonalInfo();
     }
-
-//    public function __toString()
-//    {
-//        return $this->getPersonalInfo();
-//    }
 
     /**
      * Get id
@@ -187,7 +182,7 @@ class Employee
     }
 
     /**
-     * @return int
+     * @return object
      */
     public function getPersonalInfo()
     {
@@ -195,7 +190,7 @@ class Employee
     }
 
     /**
-     * @param int $personalInfo
+     * @param object $personalInfo
      */
     public function setPersonalInfo($personalInfo)
     {
@@ -203,7 +198,7 @@ class Employee
     }
 
     /**
-     * @return int
+     * @return object
      */
     public function getDepartment()
     {
@@ -211,7 +206,7 @@ class Employee
     }
 
     /**
-     * @param int $department
+     * @param object $department
      */
     public function setDepartment($department)
     {
@@ -219,7 +214,7 @@ class Employee
     }
 
     /**
-     * @return int
+     * @return object
      */
     public function getDocument()
     {
@@ -227,7 +222,7 @@ class Employee
     }
 
     /**
-     * @param int $document
+     * @param object $document
      */
     public function setDocument($document)
     {

@@ -47,10 +47,6 @@ class Department
         $this->employee = new ArrayCollection();
     }
 
-    public function __get($name)
-    {
-        $this->name;
-    }
 
     public function __toString()
     {
@@ -98,7 +94,7 @@ class Department
     }
 
     /**
-     * @return int
+     * @return object
      */
     public function getEmployee()
     {
@@ -106,7 +102,7 @@ class Department
     }
 
     /**
-     * @param int $employee
+     * @param object $employee
      */
     public function setEmployee($employee)
     {
