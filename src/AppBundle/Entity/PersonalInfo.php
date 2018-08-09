@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * PersonalInfo
@@ -24,6 +25,8 @@ class PersonalInfo
     /**
      * @var string
      * @ORM\Column(name="first_name", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Type("string")
      */
 
     private $firstName;
@@ -31,18 +34,23 @@ class PersonalInfo
     /**
      * @var string
      * @ORM\Column(name="last_name", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Type("string")
      */
     private $lastName;
 
     /**
      * @var string
-     * @ORM\Column(name="gender", type="string", length=64)
+     * @ORM\Column(name="gender")
+     * @Assert\NotBlank()
      */
     private $gender;
 
     /**
      * @var mixed
      * @ORM\Column(name="dob", type="date")
+     * @Assert\NotBlank()
+     * @Assert\Date()
      */
 
     private $dob;
@@ -50,6 +58,8 @@ class PersonalInfo
     /**
      * @var string
      * @ORM\Column(name="cnic", type="string", length=64)
+     * @Assert\NotBlank()
+     * @Assert\Type("integer")
      */
 
     private $cnic;
@@ -169,6 +179,9 @@ class PersonalInfo
         $this->employee = $employee;
     }
 
-
+    public function __toString()
+    {
+        return $this->getFirstName().' '.$this->getLastName();
+    }
 }
 

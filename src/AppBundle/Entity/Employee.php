@@ -7,13 +7,14 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Employee
+ * Employees
  * @ORM\Table(name="employee")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EmployeeRepository")
  */
 
 class Employee
 {
+
     /**
      * @var int
      *
@@ -38,8 +39,8 @@ class Employee
     private $joiningDate;
 
     /**
-     * @var
-     *@ORM\Column(name="job_role", type="string", length=255)
+     *@ORM\Column(name="job_role", type="array")
+     *@Assert\NotBlank()
      */
     private $jobRole;
 
@@ -84,6 +85,7 @@ class Employee
     public function __construct()
     {
         $this->task = new ArrayCollection();
+        $this->jobRole = new ArrayCollection();
     }
 
     public function __get($name)
@@ -227,5 +229,10 @@ class Employee
     public function setDocument($document)
     {
         $this->document = $document;
+    }
+
+    public function __toString()
+    {
+        return $this->getEmail();
     }
 }
