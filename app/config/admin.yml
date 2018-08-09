@@ -17,7 +17,7 @@ easy_admin:
                  title: '%%entity_label%% (#%%entity_id%%)'
         Employee:
             class: AppBundle\Entity\Employee
-            label: 'Employee'
+            label: 'Employees'
             list:
                  title: "Most Recent %%entity_label%%s"
             show:
@@ -37,7 +37,7 @@ easy_admin:
             show:
                  title: '%%entity_label%% (#%%entity_id%%)'
 
-    site_name: '<em>Employee Management System</>'
+    site_name: '<em>Employees Management System</>'
     design:
         brand_color: '#205081'
         color_scheme: 'dark'

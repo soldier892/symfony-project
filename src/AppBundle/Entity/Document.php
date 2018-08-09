@@ -3,7 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Document
  *
@@ -61,7 +61,7 @@ class Document
     }
 
     /**
-     * @return object
+     * @return
      */
     public function getEmployee()
     {
@@ -74,5 +74,10 @@ class Document
     public function setEmployee($employee)
     {
         $this->employee = $employee;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

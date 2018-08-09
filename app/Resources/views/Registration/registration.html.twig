@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<div class="banner">
+
+    <div class="form-box">
+
+        <h3 class="text-center"> Register Employee </h3>
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+
+        {% if is_granted('ROLE_USER') %}
+            <a href="{{ path('fos_user_security_logout') }}">Logout</a>
+        {% else %}
+            <a href="{{ path('fos_user_security_login') }}">Already Registered? Login</a>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}
