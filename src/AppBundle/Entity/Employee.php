@@ -94,6 +94,22 @@ class Employee
     }
 
     /**
+     * @return mixed
+     */
+    public function getTask()
+    {
+        return $this->task;
+    }
+
+    /**
+     * @param mixed $task
+     */
+    public function setTask($task)
+    {
+        $this->task = $task;
+    }
+
+    /**
      * Get id
      *
      * @return int

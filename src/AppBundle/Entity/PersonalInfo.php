@@ -50,7 +50,6 @@ class PersonalInfo
      * @var mixed
      * @ORM\Column(name="dob", type="date")
      * @Assert\NotBlank()
-     * @Assert\Date()
      */
 
     private $dob;
