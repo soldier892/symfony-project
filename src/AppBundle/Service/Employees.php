@@ -1,25 +1,34 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: coeus
- * Date: 8/8/18
- * Time: 6:44 PM
- */
 
 namespace AppBundle\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 
+/**
+ * Class Employees
+ * @package AppBundle\Service
+ */
 class Employees
 {
+    /**
+     * @var EntityManagerInterface
+     */
     public $entityManager;
 
+    /**
+     * Employees constructor.
+     * @param EntityManagerInterface $doctrine
+     */
     public function __construct(EntityManagerInterface $doctrine)
     {
         $this->entityManager = $doctrine;
     }
 
-        public function createEmployee($user)
+    /**
+     * @param $user
+     * @return bool
+     */
+    public function createEmployee($user)
     {
 
         $employee = $user->get('employee')->getData();

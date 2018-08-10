@@ -7,7 +7,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * PersonalInfo
- *
  * @ORM\Table(name="personal_info")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PersonalInfoRepository")
  */
@@ -15,7 +14,6 @@ class PersonalInfo
 {
     /**
      * @var int
-     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -28,7 +26,6 @@ class PersonalInfo
      * @Assert\NotBlank()
      * @Assert\Type("string")
      */
-
     private $firstName;
 
     /**
@@ -51,7 +48,6 @@ class PersonalInfo
      * @ORM\Column(name="dob", type="date")
      * @Assert\NotBlank()
      */
-
     private $dob;
 
     /**
@@ -60,7 +56,6 @@ class PersonalInfo
      * @Assert\NotBlank()
      * @Assert\Type("integer")
      */
-
     private $cnic;
 
     /**
@@ -68,13 +63,9 @@ class PersonalInfo
      * @ORM\OneToOne(targetEntity="Employee", inversedBy="personalInfo")
      * @ORM\JoinColumn(name="employee_id", referencedColumnName="id")
      */
-
     private $employee;
 
-
     /**
-     * Get id
-     *
      * @return int
      */
     public function getId()
@@ -178,6 +169,9 @@ class PersonalInfo
         $this->employee = $employee;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->getFirstName().' '.$this->getLastName();

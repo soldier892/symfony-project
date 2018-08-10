@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: coeus
- * Date: 8/9/18
- * Time: 1:03 PM
- */
 
 namespace AppBundle\Form;
 
@@ -15,14 +9,22 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class EmployeeForm
+ * @package AppBundle\Form
+ */
 class EmployeeForm extends AbstractType
 {
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
         $builder
             ->add('email', EmailType::class)
-            ->add('jobRole', ChoiceType::class, array(
+            ->add('jobRole', ChoiceType::class, [
                 'choices'  => array(
                     'ASE' => 'ase',
                     'SE' => 'se',
@@ -39,18 +41,21 @@ class EmployeeForm extends AbstractType
                     'CEO' => 'ceo',
                 ),
                 'multiple'  => true,
-            ));
+            ]);
     }
 
+    /**
+     * @param OptionsResolver $resolver
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         parent::configureOptions($resolver);
 
         $resolver->setDefaults(
-            array(
+            [
                 'csrf_protection' => false,
                 'data_class' => Employee::class,
-            )
+            ]
         );
     }
 }

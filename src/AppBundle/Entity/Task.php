@@ -15,7 +15,6 @@ class Task
 {
     /**
      * @var int
-     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -42,24 +41,32 @@ class Task
      */
     private $employee;
 
+    /**
+     * Task constructor.
+     */
     public function __construct()
     {
         $this->employee = new ArrayCollection();
     }
 
+    /**
+     * @param $name
+     * @return string
+     */
     public function __get($name)
     {
         return $this->title;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->title;
     }
 
     /**
-     * Get id
-     *
      * @return int
      */
     public function getId()
@@ -114,6 +121,4 @@ class Task
     {
         $this->employee = $employee;
     }
-
-
 }
