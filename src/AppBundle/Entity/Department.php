@@ -5,9 +5,9 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Department
- *
  * @ORM\Table(name="department")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\DepartmentRepository")
  */
@@ -26,7 +26,6 @@ class Department
      * @var string
      * @ORM\Column(name="name", type="string", length=255)
      */
-
     private $name;
 
     /**
@@ -42,12 +41,17 @@ class Department
      */
     private $employee;
 
+    /**
+     * Department constructor.
+     */
     public function __construct()
     {
         $this->employee = new ArrayCollection();
     }
 
-
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->name;

@@ -11,13 +11,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="employee")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EmployeeRepository")
  */
-
 class Employee
 {
-
     /**
      * @var int
-     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -82,12 +79,19 @@ class Employee
      */
     private $task;
 
+    /**
+     * Employee constructor.
+     */
     public function __construct()
     {
         $this->task = new ArrayCollection();
         $this->jobRole = new ArrayCollection();
     }
 
+    /**
+     * @param $name
+     * @return object
+     */
     public function __get($name)
     {
         return $this->getPersonalInfo();
@@ -110,8 +114,6 @@ class Employee
     }
 
     /**
-     * Get id
-     *
      * @return int
      */
     public function getId()
@@ -247,6 +249,9 @@ class Employee
         $this->document = $document;
     }
 
+    /**
+     * @return mixed
+     */
     public function __toString()
     {
         return $this->getEmail();

@@ -4,9 +4,9 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Document
- *
  * @ORM\Table(name="document")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\DocumentRepository")
  */
@@ -14,7 +14,6 @@ class Document
 {
     /**
      * @var int
-     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -76,6 +75,9 @@ class Document
         $this->employee = $employee;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->name;

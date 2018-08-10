@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: coeus
- * Date: 8/9/18
- * Time: 1:03 PM
- */
 
 namespace AppBundle\Form;
 
@@ -17,8 +11,16 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class InfoForm
+ * @package AppBundle\Form
+ */
 class InfoForm extends AbstractType
 {
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
@@ -26,26 +28,29 @@ class InfoForm extends AbstractType
         $builder
             ->add('firstName', TextType::class)
             ->add('lastName', TextType::class)
-            ->add('gender', ChoiceType::class, array(
-                'choices'  => array(
+            ->add('gender', ChoiceType::class, [
+                'choices'  => [
                     'Male' => 'male',
                     'Female' => 'female',
-                ),
+                ],
                 'required' => true
-            ))
+            ])
             ->add('dob', DateType::class)
             ->add('cnic', IntegerType::class);
     }
 
+    /**
+     * @param OptionsResolver $resolver
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         parent::configureOptions($resolver);
 
         $resolver->setDefaults(
-            array(
+            [
                 'csrf_protection' => false,
                 'data_class' => PersonalInfo::class,
-            )
+            ]
         );
     }
 }

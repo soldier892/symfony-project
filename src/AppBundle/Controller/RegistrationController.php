@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 class RegistrationController extends Controller
 {
     /**
+     * @param Request $request
      * @return Response
      * @Route("/create/user/", name="create_user")
      */
@@ -29,8 +30,8 @@ class RegistrationController extends Controller
             }
         }
 
-        return $this->render('/Registration/registration.html.twig', array(
+        return $this->render('/Registration/registration.html.twig',[
             'form' => $form->createView()
-        ));
+        ]);
     }
 }

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: coeus
- * Date: 8/9/18
- * Time: 1:02 PM
- */
 
 namespace AppBundle\Form;
 
@@ -16,8 +10,16 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class UserForm
+ * @package AppBundle\Form
+ */
 class UserForm extends AbstractType
 {
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
@@ -27,15 +29,18 @@ class UserForm extends AbstractType
             ->add('password', PasswordType::class);
     }
 
+    /**
+     * @param OptionsResolver $resolver
+     */
    public function configureOptions(OptionsResolver $resolver)
    {
        parent::configureOptions($resolver);
 
        $resolver->setDefaults(
-           array(
+           [
                'csrf_protection' => true,
                'data_class' => User::class,
-           )
+           ]
        );
    }
 }
