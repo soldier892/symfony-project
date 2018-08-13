@@ -38,3 +38,8 @@ services:
         class: AppBundle\Service\Employees
         arguments:
             - '@doctrine.orm.entity_manager'
+
+    app.service.usertask:
+        class: AppBundle\Service\UserTask
+        arguments:
+            - '@doctrine.orm.entity_manager'
