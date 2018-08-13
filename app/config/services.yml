@@ -38,3 +38,8 @@ services:
         class: AppBundle\Service\Employees
         arguments:
             - '@doctrine.orm.entity_manager'
+
+    AppBundle\Form\:
+        resource: '../../src/AppBundle/Form'
+        arguments:
+            - '@translator'

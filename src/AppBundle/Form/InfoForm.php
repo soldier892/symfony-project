@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * Class InfoForm
@@ -17,6 +18,16 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class InfoForm extends AbstractType
 {
+    /**
+     * @var TranslatorInterface
+     */
+    private $translator;
+
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -26,17 +37,17 @@ class InfoForm extends AbstractType
         parent::buildForm($builder, $options);
 
         $builder
-            ->add('firstName', TextType::class)
-            ->add('lastName', TextType::class)
-            ->add('gender', ChoiceType::class, [
+            ->add($this->translator->trans('firstName'), TextType::class)
+            ->add($this->translator->trans('lastName'), TextType::class)
+            ->add($this->translator->trans('gender'), ChoiceType::class, [
                 'choices'  => [
                     'Male' => 'male',
                     'Female' => 'female',
                 ],
                 'required' => true
             ])
-            ->add('dob', DateType::class)
-            ->add('cnic', IntegerType::class);
+            ->add($this->translator->trans('dob'), DateType::class)
+            ->add($this->translator->trans('cnic'), IntegerType::class);
     }
 
     /**

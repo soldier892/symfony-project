@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * Class RegistrationForm
@@ -12,6 +13,16 @@ use Symfony\Component\Form\FormBuilderInterface;
  */
 class RegistrationForm extends AbstractType
 {
+    /**
+     * @var TranslatorInterface
+     */
+    private $translator;
+
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -21,11 +32,10 @@ class RegistrationForm extends AbstractType
         parent::buildForm($builder, $options);
 
         $builder
-            ->add('user',UserForm::class)
-
-        ->add('employee',EmployeeForm::class)
-        ->add('info',InfoForm::class)
-            ->add('save', SubmitType::class, ['label' =>'Register User','attr' => [
+            ->add($this->translator->trans('user'),UserForm::class)
+        ->add($this->translator->trans('employee'),EmployeeForm::class)
+        ->add($this->translator->trans('info'),InfoForm::class)
+            ->add('save', SubmitType::class, ['label' => $this->translator->trans('Register User'),'attr' => [
                 'class' => 'btn btn-info']])
             ->getForm();
     }
