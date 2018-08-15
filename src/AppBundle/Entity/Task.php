@@ -50,15 +50,6 @@ class Task
     }
 
     /**
-     * @param $name
-     * @return string
-     */
-    public function __get($name)
-    {
-        return $this->title;
-    }
-
-    /**
      * @return string
      */
     public function __toString()

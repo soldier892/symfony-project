@@ -31,7 +31,6 @@ class Employee
     /**
      * @var
      * @ORM\Column(name="joining_date", type="date")
-     * @Assert\Date()
      */
     private $joiningDate;
 
@@ -73,7 +72,7 @@ class Employee
     private $document;
 
     /**
-     * Many Users have Many Groups.
+     * Many Users have Many Tasks.
      * @ORM\ManyToMany(targetEntity="Task", inversedBy="employee")
      * @ORM\JoinTable(name="employee_task")
      */
@@ -98,7 +97,7 @@ class Employee
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection
      */
     public function getTask()
     {
@@ -106,7 +105,7 @@ class Employee
     }
 
     /**
-     * @param mixed $task
+     * @param Task $task
      */
     public function setTask($task)
     {
