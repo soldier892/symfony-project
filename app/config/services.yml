@@ -39,7 +39,14 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
 
+
     app.service.usertask:
         class: AppBundle\Service\UserTask
         arguments:
             - '@doctrine.orm.entity_manager'
+
+    AppBundle\Form\:
+        resource: '../../src/AppBundle/Form'
+        arguments:
+            - '@translator'
+

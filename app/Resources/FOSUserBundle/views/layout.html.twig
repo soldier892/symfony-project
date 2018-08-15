@@ -4,6 +4,9 @@
     <div class="banner">
         <div class="form-box">
             {% block fos_user_content %} {% endblock %}
+            <a href="{{ path('create_user') }}">
+                {{ 'Register'|trans }}
+            </a>
         </div>
     </div>
 {% endblock %}

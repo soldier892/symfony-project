@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * Class EmployeeForm
@@ -16,6 +17,16 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class EmployeeForm extends AbstractType
 {
     /**
+     * @var TranslatorInterface
+     */
+    private $translator;
+
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
+
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -23,8 +34,8 @@ class EmployeeForm extends AbstractType
     {
         parent::buildForm($builder, $options);
         $builder
-            ->add('email', EmailType::class)
-            ->add('jobRole', ChoiceType::class, [
+            ->add($this->translator->trans('email'), EmailType::class)
+            ->add($this->translator->trans('jobRole'), ChoiceType::class, [
                 'choices'  => array(
                     'ASE' => 'ase',
                     'SE' => 'se',
