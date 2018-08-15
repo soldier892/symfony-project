@@ -1,14 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: coeus
- * Date: 8/13/18
- * Time: 11:32 AM
- */
 
 namespace AppBundle\Command;
 
-use AppBundle\Entity\Employee;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -24,7 +17,7 @@ class GetUserTask extends Command
     public $requirePassword;
     public $userTask;
 
-    public function __construct(bool $requirePassword = false, UserTask $userTask)
+    public function __construct($requirePassword = false, UserTask $userTask)
     {
         parent::__construct();
         $this->requirePassword = $requirePassword;
@@ -50,9 +43,17 @@ class GetUserTask extends Command
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('successfully returned tasks associated with username!');
-        $this->userTask->getUserTask($input->getArgument('username'));
+        $tasks = $this->userTask->getUserTask($input->getArgument('username'));
 
-//        dump($employee->getTask());
+        if ($tasks->count()){
+            foreach ($tasks as $task) {
+                $output->writeln($task);
+            }
+            $output->writeln('successfully returned tasks associated with username!');
+        }
+        else{
+            $output->writeln('No tasks assigned with this username!');
+        }
+
     }
 }

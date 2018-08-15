@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: coeus
- * Date: 8/13/18
- * Time: 12:08 PM
- */
 
 namespace AppBundle\Service;
 
@@ -27,7 +21,7 @@ class UserTask
     /**
      * @var ArrayCollection
      */
-    public $task;
+    public $tasks;
 
     /**
      * Employees constructor.
@@ -36,11 +30,20 @@ class UserTask
     public function __construct(EntityManagerInterface $doctrine)
     {
         $this->entityManager = $doctrine;
-        $this->task = new ArrayCollection();
+        $this->tasks = new ArrayCollection();
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getTasks()
+    {
+        return $this->tasks;
     }
 
     /**
      * @param $username
+     * @return ArrayCollection
      */
     public function getUserTask($username)
     {
@@ -52,8 +55,10 @@ class UserTask
             'email' => $user->getEmail()
         ]);
 
-//        $this->task = $employee->getTask();
+        foreach ($employee->getTask() as $item) {
+            $this->tasks->add($item->getTitle());
+        }
 
-        dump($employee->getTask());
+        return $this->getTasks();
     }
 }
