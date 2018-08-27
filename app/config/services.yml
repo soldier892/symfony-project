@@ -50,3 +50,7 @@ services:
         arguments:
             - '@translator'
 
+    acme_user.login_success_handler:
+            class: AppBundle\Service\LoginSuccessHandler
+            autowire: true
+

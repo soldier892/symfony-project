@@ -17,6 +17,7 @@ security:
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
                 default_target_path: /admin
+                success_handler: acme_user.login_success_handler
             access_denied_handler: AppBundle\Security\AccessDeniedHandler
 
             logout:
